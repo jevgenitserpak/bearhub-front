@@ -66,7 +66,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bearhub-front:build"
+            "browserTarget": "bearhub-front:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
