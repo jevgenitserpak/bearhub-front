@@ -19,3 +19,15 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.mat-card-content {
+  position: relative;
+  max-height: 90%;
+  display: block;
+  overflow: auto;
+}
+
+.test {
+  overflow: auto;
+  height: 90%;
+}

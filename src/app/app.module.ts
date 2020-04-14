@@ -24,6 +24,12 @@ import { MatTreeModule } from '@angular/material/tree';
 import { NewFileComponent } from './new-file/new-file.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DocumentsComponent } from './documents/documents.component';
+import { TodoComponent } from './todo/todo.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,9 @@ import { DocumentsComponent } from './documents/documents.component';
     NotesComponent,
     NoPageFoundComponent,
     NewFileComponent,
-    DocumentsComponent
+    DocumentsComponent,
+    TodoComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,11 @@ import { DocumentsComponent } from './documents/documents.component';
     MatCardModule,
     MatMenuModule,
     MatTreeModule,
-    DragDropModule
+    DragDropModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,60 @@
+<div class="todo">
+  <div class="header">
+  To-Do List
+</div>
+<button mat-raised-button (click)="addNewToDo()">Add ToDo</button>
+  <a mat-list-item routerLink="todo/detail">Test</a>
+
+<mat-accordion class="todo">
+  <mat-expansion-panel *ngFor="let dto of data; let i = index"
+                       (opened)="dto.open = true"
+                       (closed)="dto.open = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{dto.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{dto.open ? 'open' : 'closed'}}
+      </mat-panel-description>
+      <div class="todo-actions">
+        <mat-icon>edit</mat-icon>
+      </div>
+    </mat-expansion-panel-header>
+    <mat-selection-list>
+      <mat-list-option *ngFor="let item of dto.items"
+                       [selected]="item.check"
+                       (click)="itemChecked(item)">
+        <span [textContent]="item.check"></span>
+        <span [textContent]="item.text"></span>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Personal data
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
