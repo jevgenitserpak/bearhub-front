@@ -16,8 +16,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courses = this.http.getText('/test/hello').then(res => this.title = res);
-    // console.log(this.courses);
+    // this.courses = this.http.getText('/test/hello').then(res => this.title = res);
+    this.http.getExternalPromiseAsJson('https://quotes.rest/qod?category=inspire&language=en').then(res => {
+      console.log(res);
+      this.courses = res;
+    });
+
   }
 }
 

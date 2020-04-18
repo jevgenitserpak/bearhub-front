@@ -1,34 +1,60 @@
-<mat-sidenav-container class="sidenav-container">
+<!--<mat-sidenav-container class="sidenav-container">-->
 
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>bearhub-front</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(isHandset$ | async) ? 'over' : 'side'"
-               [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/desktop">Dashboard</a>
-      <a mat-list-item routerLink="/planner">Planner</a>
-      <a mat-list-item routerLink="/notes">Notes</a>
-      <a mat-list-item routerLink="/documents">Documents</a>
-      <a mat-list-item routerLink="/todo">To-Do</a>
-      <a mat-list-item routerLink="/404">Error page</a>
-    </mat-nav-list>
-  </mat-sidenav>
-</mat-sidenav-container>
+<!--  <mat-sidenav-content>-->
+<!--    <mat-toolbar color="primary">-->
+<!--      <button-->
+<!--        type="button"-->
+<!--        aria-label="Toggle sidenav"-->
+<!--        mat-icon-button-->
+<!--        (click)="drawer.toggle()"-->
+<!--        *ngIf="isHandset$ | async">-->
+<!--        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>-->
+<!--      </button>-->
+<!--      <span>bearhub-front</span>-->
+<!--    </mat-toolbar>-->
+<!--    &lt;!&ndash; Add Content Here &ndash;&gt;-->
+<!--    <div class="container">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--  </mat-sidenav-content>-->
+<!--  <mat-sidenav #drawer class="sidenav" fixedInViewport-->
+<!--               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"-->
+<!--               [mode]="(isHandset$ | async) ? 'over' : 'side'"-->
+<!--               [opened]="(isHandset$ | async) === false">-->
+<!--    <mat-toolbar>Menu</mat-toolbar>-->
+<!--    <mat-nav-list>-->
+<!--      <a mat-list-item routerLink="/desktop">Dashboard</a>-->
+<!--      <a mat-list-item routerLink="/planner">Planner</a>-->
+<!--      <a mat-list-item routerLink="/notes">Notes</a>-->
+<!--      <a mat-list-item routerLink="/documents">Documents</a>-->
+<!--      <a mat-list-item routerLink="/todo">To-Do</a>-->
+<!--      <a mat-list-item routerLink="/404">Error page</a>-->
+<!--    </mat-nav-list>-->
+<!--  </mat-sidenav>-->
+<!--</mat-sidenav-container>-->
+
+
+
+<!--<div id="Container">-->
+<!--<div id="Tiles">-->
+<!--  <div class="title" routerLink="/desktop"><span>Dashboard</span></div>-->
+<!--  <div class="title" routerLink="/planner"><span>Planner</span></div>-->
+<!--  <div class="title" routerLink="/notes"><span>Notes</span></div>-->
+<!--  <div class="title" routerLink="/documents"><span>Documents</span></div>-->
+<!--  <div class="title" routerLink="/todo"><span>To-Do</span></div>-->
+<!--  <div class="title" routerLink="/404"><span>Error page</span></div>-->
+<!--  <div class="title"><span>JOOUUU</span></div>-->
+<!--  <div class="title"><span>test</span></div>-->
+<!--  <div class="title"><span>test</span></div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<ul class="bod">
+  <li><a routerLink="/desktop">Dashboard</a></li>
+  <li><a routerLink="/planner">Planner</a></li>
+  <li><a routerLink="/notes">Notes</a></li>
+  <li><a routerLink="/documents">Documents</a></li>
+  <li><a routerLink="/todo">To-Do</a></li>
+  <li><a routerLink="/404">Error page</a></li>
+</ul>

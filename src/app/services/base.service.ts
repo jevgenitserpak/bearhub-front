@@ -11,7 +11,11 @@ export class BaseService {
   constructor(private http: HttpClient) { }
 
   getText(url: string): Promise<string> {
-    return this.http.get(environment.api + '/test/hello', { responseType: 'text' }).toPromise();
+    return this.http.get(environment.api + url, { responseType: 'text' }).toPromise();
+  }
+
+  getExternalPromiseAsJson(url: string): Promise<any> {
+    return this.http.get(url, { responseType: 'json' }).toPromise();
   }
 
 }

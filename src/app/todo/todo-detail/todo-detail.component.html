@@ -1,9 +1,11 @@
 <div class="todo">
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Title</mat-label>
-      <input matInput placeholder="Ex. Pizza" [value]="dto.title">
-    </mat-form-field>
+  <form >
+    <div class="todo-action">
+      <mat-form-field >
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="dto.title">
+      </mat-form-field>
+    </div>
     <mat-list class="todo-add">
       <mat-list-item *ngFor="let item of dto.items">
         <mat-form-field class="example-full-width">
@@ -12,12 +14,13 @@
         </mat-form-field>
       </mat-list-item>
     </mat-list>
+    <div class="todo-add">
     <button type="button"
             mat-fab
-            class="todo-action"
             aria-label="Example icon-button with a heart icon"
             (click)="addTodoItem()">
       <mat-icon>add</mat-icon>
     </button>
+    </div>
   </form>
 </div>
