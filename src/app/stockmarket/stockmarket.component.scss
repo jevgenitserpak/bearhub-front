@@ -1,0 +1,58 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  width: 50vw;
+  height: 70vh;
+  background-color: #feffff;
+  //border: 1px #e6ebf1;
+  border-spacing: 0px;
+  table-layout: fixed;
+
+  .price {
+    width: 100px;
+  }
+
+  .symbol {
+    width: 100px;
+  }
+
+  thead {
+    background-color: #cccccc;
+  }
+
+  tbody td {
+    line-height: 1.5;
+    border-bottom: 1px solid #e6ebf1;
+  }
+
+  tbody tr:hover {
+    cursor: pointer;
+  }
+
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #feffff;
+
+  .current-page {
+    margin: 0 10px 0 10px;
+  }
+}
+
+

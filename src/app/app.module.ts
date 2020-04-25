@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DesktopComponent } from './desktop/desktop.component';
-import {RouterModule} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -15,7 +14,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PlannerComponent } from './planner/planner.component';
-import { NotesComponent } from './notes/notes.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -30,6 +28,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { TodoDetailComponent } from './todo/todo-detail/todo-detail.component';
 import {MatInputModule} from '@angular/material/input';
+import { StockmarketComponent } from './stockmarket/stockmarket.component';
+import { LoadingComponent } from './common/loading/loading.component';
+import {MatTableModule} from '@angular/material/table';
+import { StockProfileComponent } from './stockmarket/stock-profile/stock-profile.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,12 +40,14 @@ import {MatInputModule} from '@angular/material/input';
     DesktopComponent,
     MyNavComponent,
     PlannerComponent,
-    NotesComponent,
     NoPageFoundComponent,
     NewFileComponent,
     DocumentsComponent,
     TodoComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    StockmarketComponent,
+    LoadingComponent,
+    StockProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,9 @@ import {MatInputModule} from '@angular/material/input';
     MatExpansionModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

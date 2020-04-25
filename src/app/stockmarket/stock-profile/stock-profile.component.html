@@ -1,0 +1,39 @@
+<h1 >{{data.companyName}}</h1>
+<div class="modal-content">
+  <div class="profile-header">
+    <img src="{{data.image}}" alt="{{data.companyName}}">
+    <div [textContent]="data.companyName"></div>
+    <div>Ceo: {{data.ceo}}</div>
+    <a href="{{data.website}}">{{data.website}}</a>
+    <div class="description">
+      <div [textContent]="data.description" *ngIf="!collapsed"></div>
+      <button type="button" (click)="collapsed = !collapsed">Toggle Description</button>
+    </div>
+  </div>
+  <div class="preference">
+    <div for="price">Price</div>
+    <div name="price" id="price" [textContent]="data.price"></div>
+  </div>
+  <div class="preference">
+    <label for="changesPercentage">Changes</label>
+    <span name="changesPercentage" id="changesPercentage" [textContent]="data.changesPercentage"></span>
+  </div>
+  <div class="preference">
+    <label for="exchange">Market</label>
+    <span name="exchange" id="exchange" [textContent]="data.exchange"></span>
+  </div>
+  <div class="preference">
+    <label for="range">Range</label>
+    <span name="range" id="range" [textContent]="data.range"></span>
+  </div>
+  <div class="preference">
+    <label for="industry">Industry</label>
+    <span name="industry" id="industry" [textContent]="data.industry"></span>
+  </div>
+  <div class="preference">
+    <label for="sector">Sector</label>
+    <span name="sector" id="sector" [textContent]="data.sector"></span>
+  </div>
+</div>
+
+

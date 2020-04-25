@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class BaseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   getText(url: string): Promise<string> {
     return this.http.get(environment.api + url, { responseType: 'text' }).toPromise();

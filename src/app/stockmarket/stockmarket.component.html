@@ -1,0 +1,36 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+  <table>
+    <thead>
+    <tr>
+<!--      <td class="symbol"></td>-->
+      <td class="symbol">Smybol</td>
+      <td class="name">Name</td>
+      <td class="price">Price</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let symbol of pageData" (click)="toggleProfile(symbol)">
+<!--      <td>-->
+<!--        <span class="material-icons" *ngIf="!symbol.expanded">expand_more</span>-->
+<!--        <span class="material-icons" *ngIf="symbol.expanded">expand_less</span>-->
+<!--      </td>-->
+      <td class="symbol" [textContent]="symbol.symbol"></td>
+      <td class="name" [textContent]="symbol.name"></td>
+      <td class="price" [textContent]="symbol.price"></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="subrow">
+        <div class="profile-header">
+          test
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination" *ngIf="currentPage != undefined">
+    <button type="button" (click)="previousPage()" *ngIf="currentPage > 1"><span class="material-icons">navigate_before</span></button>
+    <span class="current-page">{{currentPage}} ... {{maxPage}}</span>
+    <button type="button" (click)="nextPage()" *ngIf="currentPage < maxPage"><span class="material-icons">navigate_next</span></button>
+  </div>
+</div>
