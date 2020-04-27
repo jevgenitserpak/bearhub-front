@@ -1,12 +1,17 @@
-<h1 >{{data.companyName}}</h1>
+<h1>
+  {{data.profile.companyName}}
+  <a href="{{'https://finance.yahoo.com/quote/' + data.symbol}}">
+    <span class="material-icons">link</span>
+  </a>
+</h1>
 <div class="modal-content">
   <div class="profile-header">
-    <img src="{{data.image}}" alt="{{data.companyName}}">
-    <div [textContent]="data.companyName"></div>
-    <div>Ceo: {{data.ceo}}</div>
-    <a href="{{data.website}}">{{data.website}}</a>
+    <img src="{{data.profile.image}}" alt="{{data.profile.companyName}}">
+    <div [textContent]="data.profile.companyName"></div>
+    <div *ngIf="data.profile.ceo">Ceo: {{data.profile.ceo}}</div>
+    <a href="{{data.profile.website}}">{{data.profile.website}}</a>
     <div class="description">
-      <div [textContent]="data.description" *ngIf="!collapsed"></div>
+      <div [textContent]="data.profile.description" *ngIf="!collapsed"></div>
       <button type="button" (click)="collapsed = !collapsed">Toggle Description</button>
     </div>
   </div>
@@ -16,23 +21,23 @@
   </div>
   <div class="preference">
     <label for="changesPercentage">Changes</label>
-    <span name="changesPercentage" id="changesPercentage" [textContent]="data.changesPercentage"></span>
+    <span name="changesPercentage" id="changesPercentage" [textContent]="data.profile.changesPercentage"></span>
   </div>
   <div class="preference">
     <label for="exchange">Market</label>
-    <span name="exchange" id="exchange" [textContent]="data.exchange"></span>
+    <span name="exchange" id="exchange" [textContent]="data.profile.exchange"></span>
   </div>
   <div class="preference">
     <label for="range">Range</label>
-    <span name="range" id="range" [textContent]="data.range"></span>
+    <span name="range" id="range" [textContent]="data.profile.range"></span>
   </div>
   <div class="preference">
     <label for="industry">Industry</label>
-    <span name="industry" id="industry" [textContent]="data.industry"></span>
+    <span name="industry" id="industry" [textContent]="data.profile.industry"></span>
   </div>
   <div class="preference">
     <label for="sector">Sector</label>
-    <span name="sector" id="sector" [textContent]="data.sector"></span>
+    <span name="sector" id="sector" [textContent]="data.profile.sector"></span>
   </div>
 </div>
 

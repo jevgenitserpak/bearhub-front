@@ -33,6 +33,10 @@ import { LoadingComponent } from './common/loading/loading.component';
 import {MatTableModule} from '@angular/material/table';
 import { StockProfileComponent } from './stockmarket/stock-profile/stock-profile.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
+import { StockListComponent } from './stockmarket/stock-list/stock-list.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     TodoDetailComponent,
     StockmarketComponent,
     LoadingComponent,
-    StockProfileComponent
+    StockProfileComponent,
+    StockListComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCheckboxModule,
     MatInputModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSortModule,
+    MatTabsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

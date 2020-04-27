@@ -1,0 +1,59 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div *ngIf="!isLoading">
+  <div class="filter">
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Insert searchterm</mat-label>
+        <input matInput type="search" [(ngModel)]="searchTerm" name="searchterm">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Min price</mat-label>
+        <input matInput type="number" [(ngModel)]="minPrice" name="minprice" min="0" >
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Max price</mat-label>
+        <input matInput type="number" [(ngModel)]="maxPrice" name="maxprice" min="0" >
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+
+      <button type="button" mat-raised-button color="primary" (click)="applyFilter()">Search</button>
+    </form>
+  </div>
+  <table matSort (matSortChange)="sortData($event)">
+    <thead>
+    <tr>
+      <!--      <td class="symbol"></td>-->
+      <th mat-sort-header="symbol" class="symbol">Smybol</th>
+      <th mat-sort-header="name" class="name">Name</th>
+      <th mat-sort-header="price" class="price">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let symbol of pageData" (click)="toggleProfile(symbol)">
+      <!--      <td>-->
+      <!--        <span class="material-icons" *ngIf="!symbol.expanded">expand_more</span>-->
+      <!--        <span class="material-icons" *ngIf="symbol.expanded">expand_less</span>-->
+      <!--      </td>-->
+      <td class="symbol" [textContent]="symbol.symbol"></td>
+      <td class="name" [textContent]="symbol.name"></td>
+      <td class="price" [textContent]="symbol.price"></td>
+    </tr>
+    <tr>
+      <td colspan="3" class="subrow">
+        <div class="profile-header">
+          test
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="pagination" *ngIf="currentPage != undefined && maxPage > 1">
+    <button type="button" (click)="previousPage()" ><span class="material-icons">navigate_before</span></button>
+    <span class="current-page">{{currentPage}} ... {{maxPage}}</span>
+    <button type="button" (click)="nextPage()" ><span class="material-icons">navigate_next</span></button>
+  </div>
+</div>
