@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Sort} from '@angular/material/sort';
-import {BaseSymbolItem} from '../dto/stock-items.type';
+import {SymbolItem} from '../dto/stock-items.type';
 import {StockmarketService} from '../stockmarket.service';
 import {StockProfileComponent} from '../stock-profile/stock-profile.component';
 
@@ -13,9 +13,9 @@ import {StockProfileComponent} from '../stock-profile/stock-profile.component';
 export class StockListComponent implements OnInit {
 
   isLoading = true;
-  baseList: Array<BaseSymbolItem>;
-  sortedList: Array<BaseSymbolItem>;
-  pageData: Array<BaseSymbolItem>;
+  baseList: Array<SymbolItem>;
+  sortedList: Array<SymbolItem>;
+  pageData: Array<SymbolItem>;
   currentPage = 1;
   itemsPerPage = 15;
   maxPage = 1;
@@ -63,7 +63,7 @@ export class StockListComponent implements OnInit {
     this.filterPageData();
   }
 
-  toggleProfile(symbol: BaseSymbolItem) {
+  toggleProfile(symbol: SymbolItem) {
     symbol.expanded = !symbol.expanded;
     if (symbol.profile === undefined) {
       this.service.getSymbolProfile(symbol.symbol).then(result => {
@@ -75,7 +75,7 @@ export class StockListComponent implements OnInit {
     }
   }
 
-  openDialog(symbol: BaseSymbolItem) {
+  openDialog(symbol: SymbolItem) {
     const dialogRef = this.dialog.open(StockProfileComponent, {
       width: '500px',
       data: symbol

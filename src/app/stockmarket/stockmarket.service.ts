@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from '../services/base.service';
 import {HttpClient} from '@angular/common/http';
-import {BaseSymbolItem, SymbolProfile} from './dto/stock-items.type';
+import {SymbolItem, SymbolProfile} from './dto/stock-items.type';
 
 @Injectable({
   providedIn: 'root'
@@ -20,4 +20,7 @@ export class StockmarketService extends BaseService {
     return this.getExternalPromiseAsJson('https://financialmodelingprep.com/api/v3/company/profile/' + symbol);
   }
 
+  getSymbolStats(symbols: Array<string>): Promise<any> {
+    return this.getExternalPromiseAsJson('https://financialmodelingprep.com/api/v3/quote/' + symbols.join(','));
+  }
 }

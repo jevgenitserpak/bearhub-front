@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {BaseSymbolItem, SymbolProfile} from '../dto/stock-items.type';
+import {SymbolItem, SymbolProfile} from '../dto/stock-items.type';
 
 @Component({
   selector: 'app-stock-profile',
@@ -10,7 +10,7 @@ import {BaseSymbolItem, SymbolProfile} from '../dto/stock-items.type';
 export class StockProfileComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<StockProfileComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: BaseSymbolItem) { }
+              @Inject(MAT_DIALOG_DATA) public data: SymbolItem) { }
 
   public collapsed = true;
 
