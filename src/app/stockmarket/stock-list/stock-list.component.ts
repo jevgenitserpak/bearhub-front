@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Sort} from '@angular/material/sort';
 import {SymbolItem} from '../dto/stock-items.type';
 import {StockmarketService} from '../stockmarket.service';
 import {StockProfileComponent} from '../stock-profile/stock-profile.component';
+import {LoadingService} from '../../common/loading/loading.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -12,7 +13,7 @@ import {StockProfileComponent} from '../stock-profile/stock-profile.component';
 })
 export class StockListComponent implements OnInit {
 
-  isLoading = true;
+
   baseList: Array<SymbolItem>;
   sortedList: Array<SymbolItem>;
   pageData: Array<SymbolItem>;
@@ -27,10 +28,12 @@ export class StockListComponent implements OnInit {
   minChangePercentage;
 
   constructor(private service: StockmarketService,
+              private loadingService: LoadingService,
               private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
+    this.loadingService.show();
     this.service.getBaseSymbolsList().then(result => {
       this.baseList = result.symbolsList;
       this.initSymbolStats();
@@ -73,7 +76,7 @@ export class StockListComponent implements OnInit {
       });
     }
     this.initList();
-    this.isLoading = false;
+    this.loadingService.hide();
   }
 
   private filterBaseList() {
@@ -135,7 +138,6 @@ export class StockListComponent implements OnInit {
       this.filterPageData();
       return;
     }
-    this.isLoading = true;
     this.sortedList = this.sortedList.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
@@ -149,7 +151,6 @@ export class StockListComponent implements OnInit {
     });
     this.currentPage = 1;
     this.filterPageData();
-    this.isLoading = false;
   }
 
   compare(a: number | string, b: number | string, isAsc: boolean) {

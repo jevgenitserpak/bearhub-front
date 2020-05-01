@@ -37,6 +37,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StockListComponent } from './stockmarket/stock-list/stock-list.component';
 import {FormsModule} from '@angular/forms';
+import {LoadingService} from './common/loading/loading.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,7 @@ import {FormsModule} from '@angular/forms';
     MatTabsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

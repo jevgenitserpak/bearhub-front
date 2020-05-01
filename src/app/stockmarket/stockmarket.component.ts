@@ -1,9 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {StockmarketService} from './stockmarket.service';
-import {SymbolItem, SymbolProfile} from './dto/stock-items.type';
-import {MatDialog} from '@angular/material/dialog';
-import {StockProfileComponent} from './stock-profile/stock-profile.component';
-import {Sort} from '@angular/material/sort';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-stockmarket',
@@ -16,6 +11,5 @@ export class StockmarketComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 }
