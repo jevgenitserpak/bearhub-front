@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="blockquote">
+  <div *ngIf="!!qod" class="blockquote">
     <h1 [textContent]="qod.quote">
     </h1>
     <h4>&mdash; {{qod.author}} ({{category | titlecase}})</h4>

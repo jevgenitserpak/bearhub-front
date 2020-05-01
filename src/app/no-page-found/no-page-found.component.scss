@@ -14,26 +14,26 @@ svg{
   width: 500px;
   height: 400px;
   text-align: center;
-  fill: #e6ebf1;
+  fill: #3c3744;
 }
 path#XMLID_5_ {
 
-  fill: #e6ebf1;
+  fill: #3c3744;
   filter: url(#blurFilter4);
 }
 path#XMLID_11_ ,path#XMLID_2_ {
-  fill: #e6ebf1;
+  fill: #3c3744;
 }
 .circle{
   animation: out 2s infinite ease-out;
-  fill: #e6ebf1;
+  fill: #3c3744;
 }
 
 #container{
   text-align:center;
 }
 .message{
-  color:#e6ebf1;
+  color:#3c3744;
 }
 .message:after{
   content:"]";
@@ -44,7 +44,7 @@ path#XMLID_11_ ,path#XMLID_2_ {
 
 .message:after, .message:before {
 
-  color: #e6ebf1;
+  color: #3c3744;
   font-size: 20px;
   -webkit-animation-name: opacity;
   -webkit-animation-duration: 2s;

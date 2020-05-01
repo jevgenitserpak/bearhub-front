@@ -15,7 +15,7 @@
   position: relative;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  color: #ffffff;
+  color: black;
   padding: 30px 0;
   width: 100%;
   //max-width: 40vh;
@@ -29,7 +29,7 @@
 /* Blockquote header */
 .blockquote h1 {
   position: relative;
-  color: #FFFFFF;
+  color: black;
   font-size: 20px;
   font-weight: 600;
   line-height: 1;
@@ -41,7 +41,7 @@
 .blockquote:after {
   position: absolute;
   content: "”";
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
   font-size: 10rem;
   line-height: 0;
   bottom: -43px;
@@ -60,7 +60,7 @@
 .blockquote h4 {
   position: relative;
   //color: #292a2b;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   font-size: 1.4rem;
   font-weight: normal;
   line-height: 1;
@@ -79,7 +79,7 @@
   width: 150px;
   height: 50px;
   padding:0.35em 1.2em;
-  border:0.1em solid #FFFFFF;
+  border:0.1em solid black;
   margin:0 0.3em 0.3em 0;
   border-radius:0.12em;
   box-sizing: border-box;
@@ -87,7 +87,7 @@
   font-family:'Roboto',sans-serif;
   font-weight:500;
   font-size: 15px;
-  color:#FFFFFF;
+  color: black;
   text-align:center;
   transition: all 0.2s;
   background: transparent;
@@ -96,7 +96,7 @@
 .action button:hover{
   //color:#000000;
   //background-color:#FFFFFF;
-  background: #FFC600;
+  background: #f46036;
   border: none;
 
 }
