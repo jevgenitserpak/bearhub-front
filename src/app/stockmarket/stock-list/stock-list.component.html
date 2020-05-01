@@ -20,6 +20,18 @@
         <mat-icon matSuffix>attach_money</mat-icon>
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Min volume</mat-label>
+        <input matInput type="number" [(ngModel)]="minVolume" name="minvolume" min="0" >
+        <mat-icon matSuffix>equalizer</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Min abs change percentage</mat-label>
+        <input matInput type="number" [(ngModel)]="minChangePercentage" name="minpercentage" min="0" >
+        <mat-icon matSuffix>trending_up</mat-icon>
+      </mat-form-field>
+
       <button type="button" mat-raised-button color="primary" (click)="applyFilter()">Search</button>
     </form>
   </div>
@@ -29,6 +41,8 @@
       <!--      <td class="symbol"></td>-->
       <th mat-sort-header="symbol" class="symbol">Smybol</th>
       <th mat-sort-header="name" class="name">Name</th>
+      <th mat-sort-header="changesPercentage" class="changesPercentage">Changes</th>
+      <th mat-sort-header="volume" class="volume">Volume</th>
       <th mat-sort-header="price" class="price">Price</th>
     </tr>
     </thead>
@@ -40,6 +54,8 @@
       <!--      </td>-->
       <td class="symbol" [textContent]="symbol.symbol"></td>
       <td class="name" [textContent]="symbol.name"></td>
+      <td class="name" [textContent]="symbol.stats.changesPercentage + '%'"></td>
+      <td class="name" [textContent]="symbol.stats.volume.toLocaleString()"></td>
       <td class="price" [textContent]="symbol.price"></td>
     </tr>
     <tr>

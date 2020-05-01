@@ -23,6 +23,8 @@ export class StockListComponent implements OnInit {
   searchTerm: string;
   minPrice: number;
   maxPrice: number;
+  minVolume: number;
+  minChangePercentage;
 
   constructor(private service: StockmarketService,
               private dialog: MatDialog) {
@@ -31,7 +33,7 @@ export class StockListComponent implements OnInit {
   ngOnInit(): void {
     this.service.getBaseSymbolsList().then(result => {
       this.baseList = result.symbolsList;
-      this.filterBaseList();
+      this.initSymbolStats();
       this.sortedList = this.baseList;
       this.pageData = this.sortedList.slice(0, this.itemsPerPage);
       if (result.symbolsList.length <= this.itemsPerPage) {
@@ -39,12 +41,50 @@ export class StockListComponent implements OnInit {
       } else {
         this.maxPage = Math.ceil(this.baseList.length / this.itemsPerPage);
       }
-      this.isLoading = false;
     });
   }
 
+  initList() {
+    this.filterBaseList();
+    this.sortedList = this.baseList;
+    this.pageData = this.sortedList.slice(0, this.itemsPerPage);
+    if (this.baseList.length <= this.itemsPerPage) {
+      this.currentPage = undefined;
+    } else {
+      this.maxPage = Math.ceil(this.baseList.length / this.itemsPerPage);
+    }
+  }
+
+  private async initSymbolStats() {
+    for (let i = 0; i < this.baseList.length; i += 800) {
+      const start = i;
+      const end = i + 800 >= this.baseList.length ? this.baseList.length - 1 : i + 800;
+      console.log('start:' + start, ' end:' + end);
+      console.log(this.baseList.length);
+      const partList = this.baseList.slice(start, end);
+      const test = partList.map( item => item.symbol);
+      await this.service.getSymbolStats(partList.map( item => item.symbol)).then(result => {
+        result.forEach(stat => {
+          const symbolItem = this.baseList.find(item => item.symbol === stat.symbol);
+          if (symbolItem !== undefined) {
+            symbolItem.stats = stat;
+          }
+        });
+      });
+    }
+    this.initList();
+    this.isLoading = false;
+  }
+
   private filterBaseList() {
-    this.baseList = this.baseList.filter(item => item.price > 0 && item.name !== undefined && item.name !== '');
+    this.baseList = this.baseList.filter(item =>
+      item.price > 0
+      && item.name !== undefined
+      && item.name !== ''
+      && item.stats !== undefined
+      && item.stats.volume !== undefined
+      && item.stats.changesPercentage !== undefined
+      && item.stats.volume > 0);
   }
 
   filterPageData() {
@@ -101,6 +141,8 @@ export class StockListComponent implements OnInit {
       switch (sort.active) {
         case 'name': return this.compare(a.name, b.name, isAsc);
         case 'symbol': return this.compare(a.symbol, b.symbol, isAsc);
+        case 'changesPercentage': return this.compare(a.stats.changesPercentage, b.stats.changesPercentage, isAsc);
+        case 'volume': return this.compare(a.stats.volume, b.stats.volume, isAsc);
         case 'price': return this.compare(a.price, b.price, isAsc);
         default: return 0;
       }
@@ -129,6 +171,16 @@ export class StockListComponent implements OnInit {
       if (this.searchTerm !== undefined && this.searchTerm.length > 0) {
         if (!item.symbol.toLowerCase().includes(this.searchTerm.toLowerCase())
           && !item.name.toLowerCase().includes(this.searchTerm.toLowerCase())) {
+          return false;
+        }
+      }
+      if (this.minVolume !== undefined && this.minVolume > 0) {
+        if (item.stats.volume === undefined || item.stats.volume < this.minVolume) {
+          return false;
+        }
+      }
+      if (this.minChangePercentage !== undefined && this.minChangePercentage > 0) {
+        if (item.stats.changesPercentage === undefined || Math.abs(item.stats.changesPercentage) < this.minChangePercentage) {
           return false;
         }
       }
